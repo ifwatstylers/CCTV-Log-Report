@@ -1,0 +1,97 @@
+﻿@model Read_Excel_OLEDB_MVC.Models.clsNonUpdatedCCTV
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int NonUpdatedCCTV = (int)ViewBag.NonUpdatedCountInt;
+    int UpdatedCCTV = (int)ViewBag.UpdatedCountInt;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+    <div id="piechart" class="row">
+        <div class="col-md-12">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+            <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Draw the chart and set the chart values
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Unit of CCTV'],
+                ['NullValue1', 0],
+                ['NonUpdatedCCTV', @NonUpdatedCCTV],
+                ['NullValue2', 0],
+                ['UpdatedCCTV', @UpdatedCCTV],
+                ['NullValue3', 0]
+            ]);
+
+            // Optional; add a title and set the width and height of the chart
+            var options = { 'title': 'CCTV Report', 'width': 650, 'height': 400 };
+
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+            </script>
+        </div>
+    </div>
+        <br />
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @*<input type="file" name="postedFile" />*@
+            <br />
+            <input type="submit" value="Manually Reload Database" />
+            <br />
+            <br />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <table cellspacing="3">
+                        <tr>
+                            <td><b><h3>Non-Updated CCTV : @ViewBag.NonUpdatedCount unit(s)</h3></b></td>
+                        </tr>
+                        @foreach (var cctvName in Model.clsNonUpdatedName)
+                        {
+                            <tr>
+                                <td>@cctvName</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table cellspacing="3">
+                        <tr>
+                            <td><b><h3>Updated CCTV : @ViewBag.UpdatedCount unit(s)</h3></b></td>
+                        </tr>
+                        @foreach (var UpdatedcctvName in Model.clsUpdatedName)
+                        {
+                            <tr>
+                                <td>@UpdatedcctvName</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+
+
+
+        }
+
+</body>
+</html>
