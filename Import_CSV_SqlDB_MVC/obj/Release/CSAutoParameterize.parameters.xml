@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="Constring-Web.config Connection String" description="Constring Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:festive.database.windows.net,1433;Initial Catalog=FestiveDB;Persist Security Info=False;User ID=admin_festive;Password=P@55w0rd2018;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\Users\\ifwat\.ibrahim\\Downloads\\Import_CSV_SqlDB_MVC\\Import_CSV_SqlDB_MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Constring']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="D:\\Users\\ifwat\.ibrahim\\Downloads\\Import_CSV_SqlDB_MVC\\CCTV-Log-Report\\Import_CSV_SqlDB_MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Constring']/@connectionString" />
   </parameter>
 </parameters>
