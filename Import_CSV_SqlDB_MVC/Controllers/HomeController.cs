@@ -19,8 +19,8 @@ namespace Import_CSV_SqlDB_MVC.Controllers
         public ActionResult Index(clsNonUpdatedCCTV modelData)
         {
             ViewBag.Title = "PLUS CCTV";
-            if (!string.IsNullOrEmpty(Session["validsession"] as string))
-            {
+            //if (!string.IsNullOrEmpty(Session["validsession"] as string))
+            //{
                 #region READ CSV FILE FROM URL CALL
                 //read csv file online
                 string SAMPLEurlAzureFile = "https://plusappcctvuat.file.core.windows.net/cctvfeedfs/log/testcsv.csv?sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2099-10-04T09:06:59Z&st=2018-10-04T01:06:59Z&spr=https&sig=%2Fb%2BrXtUP5V%2F9%2BSXzpSauyugpG%2BvXOfn9GqLfdf1EOUE%3D";
@@ -211,16 +211,16 @@ namespace Import_CSV_SqlDB_MVC.Controllers
                 #endregion
 
                 return View(modelData);
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
 
-                //ViewBag.NonUpdatedCountInt = 0;
-                //ViewBag.UpdatedCountInt = 0;
-                //return View();
-                return RedirectToAction("SessionClosed");
-            }
+            //    //ViewBag.NonUpdatedCountInt = 0;
+            //    //ViewBag.UpdatedCountInt = 0;
+            //    //return View();
+            //    return RedirectToAction("SessionClosed");
+            //}
         }
         public ActionResult DownloadFile()
         {
